@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchComplaint from './search-complaint'
 import Link from 'next/link'
+import WalletConnect from './wallet-connect'
 
 const Navbar = () => {
     return (
@@ -8,8 +9,9 @@ const Navbar = () => {
             <Link href={"/"} className="font-bold text-xl">
                 Complaint Box
             </Link>
-            <div>
+            <div className='flex gap-x-10'>
                 <SearchComplaint />
+                <WalletConnect />
             </div>
         </div>
     )
