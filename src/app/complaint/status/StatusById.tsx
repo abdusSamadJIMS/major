@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from '@/lib/contract'; // Replace with your contract address and ABI
 
-const StatusById = ({ id }: { id: string }) => {
+const StatusById = ({ id }: { id: string | null }) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [data, setData] = useState<any>(null); // This will hold your complaint data
     const [loading, setLoading] = useState(true); // To show a loading state

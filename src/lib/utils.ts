@@ -16,6 +16,6 @@ export const getCurrentDate = () => {
 export const mapStatus = (num: number) => {
     return num === 0 ? "Pending"
         : num === 1 ? "In Progress"
-            : num === 3 ? "Resolved"
+            : num === 2 ? "Resolved"
                 : "N/A"
 }

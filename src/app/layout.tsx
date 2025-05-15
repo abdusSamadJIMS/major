@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/Footer";
 import { EdgeStoreProvider } from "@/lib/edgestore";
+import RootLayoutClient from "./complaint/root-layout-client";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +31,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <EdgeStoreProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </EdgeStoreProvider>
+        <RootLayoutClient>
+
+          <EdgeStoreProvider>
+
+            <Navbar />
+            {children}
+            <Footer />
+          </EdgeStoreProvider>
+        </RootLayoutClient>
       </body>
     </html>
   );

@@ -9,6 +9,8 @@ const Form = () => {
     const [description, setDescription] = useState("");
     const [file, setFile] = useState<File>();
     const [isLoading, setIsLoading] = useState(false)
+    const [isId, setIsId] = useState(false)
+    const [compId, setCompId] = useState("")
     const { edgestore } = useEdgeStore();
 
     async function fileUpload() {
@@ -27,6 +29,8 @@ const Form = () => {
 
     async function submitComplaint(e: React.FormEvent) {
         e.preventDefault(); // Prevent default form submission behavior
+        setIsId(false)
+        setCompId("")
         if (!window.ethereum) return;
 
         setIsLoading(true);
@@ -55,6 +59,8 @@ const Form = () => {
             if (event) {
                 const complaintId = event.args?.[0]; // First argument is ID
                 alert(`Complaint filed successfully! ID: ${complaintId}`);
+                setCompId(complaintId)
+                setIsId(true)
                 setIsLoading(false)
             } else {
                 alert("Complaint filed, but no event found.");
@@ -103,6 +109,13 @@ const Form = () => {
                         "Submit"
                 }
             </button>
+            {
+                isId &&
+                <div className="card border mt-10 p-2 font-semibold text-green-500">
+                    Complaint filed successfully! ID: {compId}
+                    <br />Please Save It
+                </div>
+            }
         </form>
     )
 }
